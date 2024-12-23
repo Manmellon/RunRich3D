@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Animator animator;
     [SerializeField] private Transform horizontal;
+    [SerializeField] private CharacterController characterController;
     
     [Header("Settings")]
     [SerializeField] private float forwardSpeed;
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour
 
     private int currentModelIndex;
 
+    public float characterRadius => characterController.radius;
+    public float ForwardSpeed => forwardSpeed;
     void Start()
     {
         currentModelIndex = 1;
