@@ -22,13 +22,15 @@ public class Player : MonoBehaviour
 
     public void MoveSide(float deltaPos)
     {
-        Debug.Log(deltaPos);
+        //Debug.Log(deltaPos);
 
-        horizontal.position = Vector3.Lerp(horizontal.position - horizontal.right * horizontalSpeed,
-                     horizontal.position + horizontal.right * horizontalSpeed,
-                     deltaPos);
+        float minX = Mathf.Max(-maxHorizontalDistance, 
+                               horizontal.localPosition.x - horizontalSpeed);
 
-        float clampedX = Mathf.Clamp(horizontal.localPosition.x, -maxHorizontalDistance, maxHorizontalDistance);
-        horizontal.localPosition = new Vector3(clampedX, 0, 0);
+        float maxX = Mathf.Min(maxHorizontalDistance,
+                               horizontal.localPosition.x + horizontalSpeed);
+
+        float x = Mathf.Lerp(minX, maxX, deltaPos);
+        horizontal.localPosition = new Vector3(x, 0, 0);
     }
 }

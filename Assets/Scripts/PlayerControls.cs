@@ -33,18 +33,19 @@ public class PlayerControls : MonoBehaviour
             case TouchPhase.Moved:
                 if (isSwiping)
                 {
-                    Vector2 swipeDelta = touch.position - startTouchPosition;
+                    Vector2 previousTouchPosition = currentTouchPosition;
+                    currentTouchPosition = touch.position;
 
-                    float currentSwipeDirection = Mathf.Sign(swipeDelta.x);
+                    Vector2 frameDelta = currentTouchPosition - previousTouchPosition;
+
+                    float currentSwipeDirection = Mathf.Sign(frameDelta.x);
                     if (currentSwipeDirection != swipeDirection)
                     {
                         swipeDirection = currentSwipeDirection;
-                        startTouchPosition = currentTouchPosition;
+                        startTouchPosition = previousTouchPosition;
                     }
 
-                    currentTouchPosition = touch.position;
-                    
-                    swipeDelta = currentTouchPosition - startTouchPosition;
+                    Vector2 swipeDelta = currentTouchPosition - startTouchPosition;
 
                     if (Mathf.Abs(swipeDelta.x) > swipeThreshold)
                     {
