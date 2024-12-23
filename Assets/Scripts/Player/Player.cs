@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
         transform.rotation = level.spawnRotate;
 
         isPlaying = true;
+        animator.SetTrigger("Start");
     }
 
     public void MoveSide(float deltaPos)
