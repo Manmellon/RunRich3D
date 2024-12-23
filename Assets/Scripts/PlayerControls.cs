@@ -37,7 +37,6 @@ public class PlayerControls : MonoBehaviour
                     if (Mathf.Abs(swipeDelta.x) > swipeThreshold)
                     {
                         player.MoveSide(currentTouchPosition.x / Screen.width);
-                        isSwiping = false;
                     }
                 }
                 break;
