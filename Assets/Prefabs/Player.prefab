@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefceb45d8c718b4ebc73a7b18636d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeThreshold: 50
+  swipeThreshold: 0
 --- !u!1 &8738894905636418243
 GameObject:
   m_ObjectHideFlags: 0
