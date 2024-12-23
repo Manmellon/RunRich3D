@@ -8,7 +8,7 @@ public class Checkpoint : MonoBehaviour
     void Start()
     {
         foreach (var flag in flags)
-            flag.transform.Rotate(transform.forward, 90);
+            flag.transform.Rotate(Vector3.forward, 90);
     }
 
     private void OnTriggerEnter(Collider other)

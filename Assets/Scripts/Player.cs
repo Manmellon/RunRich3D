@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
     {
         if (index == currentModelIndex) return;
 
-        richLimits[currentModelIndex].model.SetActive(true);
+        richLimits[currentModelIndex].model.SetActive(false);
         richLimits[index].model.SetActive(true);
 
         //TODO: Animation of happy rotation
