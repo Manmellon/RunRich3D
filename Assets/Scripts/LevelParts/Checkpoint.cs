@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
     [SerializeField] private GameObject[] flags;
 
+    private Core core;
     void Start()
     {
+        core = Core.Instance;
+
         foreach (var flag in flags)
             flag.transform.Rotate(Vector3.forward, 90);
     }
@@ -21,6 +25,8 @@ public class Checkpoint : MonoBehaviour
                 vec.z = 0;
                 flag.transform.DOLocalRotate(vec, 0.5f);
             }
+
+            core.soundController.PlaySound(audioSource, core.soundController.Checkpoint);
                 
         }
     }

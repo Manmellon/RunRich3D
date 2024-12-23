@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private Transform horizontal;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Slider richSlider;
@@ -91,6 +92,9 @@ public class Player : MonoBehaviour
 
         animator.SetFloat("Rich", (float) money / richLimits[richLimits.Length - 1].limit);
 
+        AudioClip clip = addingMoney > 0 ? core.soundController.GetCoin : core.soundController.LostMoney;
+        core.soundController.PlaySound(audioSource, clip);
+
         int i;
         for (i = richLimits.Length - 1; i >= 0; i--)
         {
@@ -133,5 +137,10 @@ public class Player : MonoBehaviour
         stageNameText.color = sliderFillImage.color = richLimits[index].stageSliderColor;
 
         core.UIController.UpdateMoney(money);
+    }
+
+    public void StepSound()
+    {
+        core.soundController.PlayStepSound(audioSource, currentModelIndex >= 2);
     }
 }

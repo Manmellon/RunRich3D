@@ -99,6 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9098269566283227975}
   - component: {fileID: 47875392364608628}
+  - component: {fileID: 1269548233726260853}
   m_Layer: 7
   m_Name: Horizontal
   m_TagString: Player
@@ -149,6 +150,103 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.65, z: 0}
+--- !u!82 &1269548233726260853
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3742515802031641440}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4576747070543634849
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +624,7 @@ GameObject:
   - component: {fileID: 7802014879098156656}
   - component: {fileID: 1591274347977236952}
   - component: {fileID: 8457452523713271343}
+  - component: {fileID: 1121839435502078849}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -561,7 +660,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca5b171a5809474988892b63340df68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 8292541094005373104}
+  animator: {fileID: 1121839435502078849}
+  audioSource: {fileID: 1269548233726260853}
   horizontal: {fileID: 9098269566283227975}
   characterController: {fileID: 47875392364608628}
   richSlider: {fileID: 1011284103257667905}
@@ -605,6 +705,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swipeThreshold: 0
+--- !u!95 &1121839435502078849
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7461669038446951375}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 6cb1a9b0e0d9e91419f8774db5ecfc92, type: 3}
+  m_Controller: {fileID: 9100000, guid: 707a0dde36e3d4c459446629ac2224ef, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8132579361564624554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1367,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 6cb1a9b0e0d9e91419f8774db5ecfc92, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1278,10 +1401,5 @@ GameObject:
 --- !u!1 &5544316372606661450 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1256841003522951573, guid: 6cb1a9b0e0d9e91419f8774db5ecfc92, type: 3}
-  m_PrefabInstance: {fileID: 2485867806990812449}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &8292541094005373104 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 6cb1a9b0e0d9e91419f8774db5ecfc92, type: 3}
   m_PrefabInstance: {fileID: 2485867806990812449}
   m_PrefabAsset: {fileID: 0}

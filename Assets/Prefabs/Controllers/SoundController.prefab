@@ -44,3 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c5f2bd8a832454ea211d5176ec6513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicSteps:
+  - {fileID: 8300000, guid: cc658107aea5ea34a8e48accdea5ffe3, type: 3}
+  - {fileID: 8300000, guid: 2592ea3a8f1064d46a1ef36ebcad9fe4, type: 3}
+  - {fileID: 8300000, guid: 736d870abab3dc646abd7678368876dd, type: 3}
+  - {fileID: 8300000, guid: b72444dfeb12cef408c877b05d5ce857, type: 3}
+  - {fileID: 8300000, guid: 4b3430d41402f6c44a820b533596caab, type: 3}
+  heelsSteps:
+  - {fileID: 8300000, guid: 3db395ee7b24c934199d3ac08b5df7db, type: 3}
+  - {fileID: 8300000, guid: 9f11b71f934848c409e17a98bd66fb64, type: 3}
+  getCoin: {fileID: 8300000, guid: 3103274c08cb649499390c30159adc74, type: 3}
+  lostMoney: {fileID: 8300000, guid: 663a9b03b81abf04186ba66d6770ab35, type: 3}
+  checkpoint: {fileID: 8300000, guid: 5d8084b1628fc12409fe7aa7d965db74, type: 3}
