@@ -36,7 +36,8 @@ public class PlayerControls : MonoBehaviour
 
                     if (Mathf.Abs(swipeDelta.x) > swipeThreshold)
                     {
-                        player.MoveSide(currentTouchPosition.x / Screen.width);
+                        float deltaPos = Mathf.InverseLerp(-1, 1, swipeDelta.x / Screen.width);
+                        player.MoveSide(deltaPos);
                     }
                 }
                 break;

@@ -2,22 +2,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed;
+    [Header("Components")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private Transform horizontal;
 
-    Animator animator;
+    [SerializeField] private float forwardSpeed;
+    [SerializeField] private float horizontalSpeed;
+    [SerializeField] private float maxHorizontalDistance;
+
 
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += transform.forward * forwardSpeed * Time.deltaTime;
     }
 
-    public void MoveSide(float newPosition)
+    public void MoveSide(float deltaPos)
     {
-        Debug.Log(newPosition);
+        Debug.Log(deltaPos);
+
+        horizontal.position = Vector3.Lerp(horizontal.position - horizontal.right * horizontalSpeed,
+                     horizontal.position + horizontal.right * horizontalSpeed,
+                     deltaPos);
+
+        float clampedX = Mathf.Clamp(horizontal.localPosition.x, -maxHorizontalDistance, maxHorizontalDistance);
+        horizontal.localPosition = new Vector3(clampedX, 0, 0);
     }
 }
