@@ -5,9 +5,11 @@ namespace ButchersGames
     public class Level : MonoBehaviour
     {
         [SerializeField] private Transform playerSpawnPoint;
+        public Vector3 spawnPos => playerSpawnPoint.position;
+        public Quaternion spawnRotate => playerSpawnPoint.rotation;
 
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
+        private void OnDrawGizmos()
     {
         if (playerSpawnPoint != null)
         {

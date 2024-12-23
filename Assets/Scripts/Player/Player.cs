@@ -1,3 +1,4 @@
+using ButchersGames;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,6 +36,16 @@ public class Player : MonoBehaviour
 
     public float characterRadius => characterController.radius;
     public float ForwardSpeed => forwardSpeed;
+
+    private bool isPlaying;
+    private Core core;
+
+    private void Awake()
+    {
+        core = Core.Instance;
+        core.levelManager.OnLevelStarted += () => SpawnPlayer();
+    }
+
     void Start()
     {
         currentModelIndex = 1;
@@ -45,7 +56,18 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (!isPlaying) return;
+
         transform.position += transform.forward * forwardSpeed * Time.deltaTime;
+    }
+
+    void SpawnPlayer()
+    {
+        Level level = core.levelManager.GetComponentInChildren<Level>();
+        transform.position = level.spawnPos;
+        transform.rotation = level.spawnRotate;
+
+        isPlaying = true;
     }
 
     public void MoveSide(float deltaPos)
@@ -108,5 +130,7 @@ public class Player : MonoBehaviour
 
         stageNameText.text = richLimits[index].name;
         stageNameText.color = sliderFillImage.color = richLimits[index].stageSliderColor;
+
+        core.UIController.UpdateMoney(money);
     }
 }

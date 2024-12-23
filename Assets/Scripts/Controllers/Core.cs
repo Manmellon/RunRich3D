@@ -16,4 +16,8 @@ public class Core : MonoBehaviour
             Instance = this;
         }
     }
+    private void Start()
+    {
+        levelManager.Init();
+    }
 }

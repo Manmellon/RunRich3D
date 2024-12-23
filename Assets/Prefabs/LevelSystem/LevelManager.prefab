@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentLevelIndex: 0
-  editorMode: 1
+  editorMode: 0
   levels: {fileID: 11400000, guid: 90a80e842a656f14c98b3fce716d2511, type: 2}

@@ -1,16 +1,37 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private TextMeshProUGUI levelNumberText;
+    [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private Button startButton;
+
+    private Core core;
+
+    private void Start()
     {
-        
+        core = Core.Instance;
+
+        core.levelManager.OnLevelStarted += () => UpdateLevel(core.levelManager.CurrentLevelIndex);
+
+        //startButton.onClick.AddListener(() => { core.levelManager.StartLevel(); startButton.gameObject.SetActive(false); });
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartButtonEvent()
     {
-        
+        core.levelManager.StartLevel();
+        startButton.gameObject.SetActive(false);
+    }
+
+    public void UpdateLevel(int lvl)
+    {
+        levelNumberText.text = "Уровень " + lvl.ToString();
+    }
+
+    public void UpdateMoney(int money)
+    {
+        moneyText.text = money.ToString();
     }
 }
