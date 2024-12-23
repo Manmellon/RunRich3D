@@ -108,7 +108,7 @@ MonoBehaviour:
   animator: {fileID: 8292541094005373104}
   horizontal: {fileID: 9098269566283227975}
   forwardSpeed: 5
-  horizontalSpeed: 0.25
+  horizontalSpeed: 0.1
   maxHorizontalDistance: 2.75
   richLimits:
   - limit: 0

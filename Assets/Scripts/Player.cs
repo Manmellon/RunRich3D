@@ -19,11 +19,15 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxHorizontalDistance;
     [SerializeField] private RichLimit[] richLimits;
 
+
     [Header("Stats")]
     [SerializeField] private int money;
 
+    private int currentModelIndex;
+
     void Start()
     {
+        currentModelIndex = 1;
     }
 
     void Update()
@@ -47,7 +51,7 @@ public class Player : MonoBehaviour
 
     public void AddMoney(int addingMoney)
     {
-        money = Mathf.Max(0, money + addingMoney);
+        money = Mathf.Clamp(money + addingMoney, 0, richLimits[richLimits.Length - 1].limit);
 
         animator.SetFloat("Rich", (float) money / richLimits[richLimits.Length - 1].limit);
 
@@ -71,9 +75,14 @@ public class Player : MonoBehaviour
 
     void SwapModel(int index)
     {
-        for (int i = 0; i < richLimits.Length; i++)
-        {
-            richLimits[i].model.SetActive(i == index);
-        }
+        if (index == currentModelIndex) return;
+
+        richLimits[currentModelIndex].model.SetActive(true);
+        richLimits[index].model.SetActive(true);
+
+        //TODO: Animation of happy rotation
+        animator.SetTrigger("Upgrade");
+
+        currentModelIndex = index;
     }
 }

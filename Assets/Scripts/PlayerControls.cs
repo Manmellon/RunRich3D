@@ -26,7 +26,7 @@ public class PlayerControls : MonoBehaviour
         switch (touch.phase)
         {
             case TouchPhase.Began:
-                startTouchPosition = touch.position;
+                currentTouchPosition = startTouchPosition = touch.position;
                 isSwiping = true;
                 break;
 
