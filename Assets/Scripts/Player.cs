@@ -1,10 +1,14 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct RichLimit
 {
     public int limit;
     public GameObject model;
+    public Color stageSliderColor;
+    public string name;
 }
 
 public class Player : MonoBehaviour
@@ -13,6 +17,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Transform horizontal;
     [SerializeField] private CharacterController characterController;
+    [SerializeField] private Slider richSlider;
+    [SerializeField] private Image sliderFillImage;
+    [SerializeField] private TextMeshProUGUI stageNameText;
     
     [Header("Settings")]
     [SerializeField] private float forwardSpeed;
@@ -31,6 +38,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         currentModelIndex = 1;
+
+        UpdateRichSlider(currentModelIndex);
+        SwapModel(currentModelIndex);
     }
 
     void Update()
@@ -69,6 +79,8 @@ public class Player : MonoBehaviour
 
         SwapModel(i);
 
+        UpdateRichSlider(i);
+
         if (money <= 0)
         {
             //GameOver();
@@ -87,5 +99,14 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Upgrade");
 
         currentModelIndex = index;
+    }
+
+    void UpdateRichSlider(int index)
+    {
+        richSlider.value = money;
+        richSlider.maxValue = richLimits[richLimits.Length - 1].limit;
+
+        stageNameText.text = richLimits[index].name;
+        stageNameText.color = sliderFillImage.color = richLimits[index].stageSliderColor;
     }
 }
