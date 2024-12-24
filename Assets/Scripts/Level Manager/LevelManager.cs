@@ -30,6 +30,7 @@ namespace ButchersGames
         public List<Level> Levels => levels.lvls;
 
         public event Action OnLevelStarted;
+        public event Action OnLevelSelected;
 
 
         public void Init()
@@ -89,6 +90,8 @@ namespace ButchersGames
             {
                 SelLevelParams(level);
                 CurrentLevelIndex = levelIndex;
+
+                OnLevelSelected?.Invoke();
             }
         }
 

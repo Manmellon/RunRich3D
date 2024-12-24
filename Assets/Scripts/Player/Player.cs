@@ -46,15 +46,13 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         core = Core.Instance;
-        core.levelManager.OnLevelStarted += () => SpawnPlayer();
+        core.levelManager.OnLevelSelected += () => SpawnPlayer();
+        core.levelManager.OnLevelStarted += () => StartWalking();
     }
 
     void Start()
     {
-        currentModelIndex = 1;
-
-        UpdateRichSlider(currentModelIndex);
-        SwapModel(currentModelIndex);
+        
     }
 
     void Update()
@@ -70,7 +68,19 @@ public class Player : MonoBehaviour
         transform.position = level.spawnPos;
         transform.rotation = level.spawnRotate;
 
+        money = 40;
+        SwapModel(1, true);
+        UpdateRichSlider(currentModelIndex);
+
+        animator.SetTrigger("Reset");
+    }
+
+    void StartWalking()
+    {
         isPlaying = true;
+        animator.ResetTrigger("Reset");
+        animator.ResetTrigger("Loose");
+        animator.ResetTrigger("Win");
         animator.SetTrigger("Start");
     }
 
@@ -112,19 +122,21 @@ public class Player : MonoBehaviour
 
         if (money <= 0)
         {
-            //GameOver();
+            isPlaying = false;
+            animator.SetTrigger("Loose");
+            core.UIController.ShowGameOver();
         }
 
     }
 
-    void SwapModel(int index)
+    void SwapModel(int index, bool firstSet = false)
     {
         if (index == currentModelIndex) return;
 
         richLimits[currentModelIndex].model.SetActive(false);
         richLimits[index].model.SetActive(true);
 
-        if (index > currentModelIndex)
+        if (index > currentModelIndex && !firstSet)
         {
             animator.SetTrigger("Upgrade");
 
