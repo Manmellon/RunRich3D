@@ -664,6 +664,7 @@ MonoBehaviour:
   audioSource: {fileID: 1269548233726260853}
   horizontal: {fileID: 9098269566283227975}
   characterController: {fileID: 47875392364608628}
+  model: {fileID: 3368404760314607728}
   richSlider: {fileID: 1011284103257667905}
   sliderFillImage: {fileID: 748878240517321865}
   stageNameText: {fileID: 6986098286568706389}
@@ -1386,6 +1387,11 @@ GameObject:
 --- !u!4 &2735139511548322506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6cb1a9b0e0d9e91419f8774db5ecfc92, type: 3}
+  m_PrefabInstance: {fileID: 2485867806990812449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3368404760314607728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6cb1a9b0e0d9e91419f8774db5ecfc92, type: 3}
   m_PrefabInstance: {fileID: 2485867806990812449}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4667134575067915046 stripped

@@ -1,4 +1,5 @@
 using ButchersGames;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Transform horizontal;
     [SerializeField] private CharacterController characterController;
+    [SerializeField] private GameObject model;
     [SerializeField] private Slider richSlider;
     [SerializeField] private Image sliderFillImage;
     [SerializeField] private TextMeshProUGUI stageNameText;
@@ -122,8 +124,15 @@ public class Player : MonoBehaviour
         richLimits[currentModelIndex].model.SetActive(false);
         richLimits[index].model.SetActive(true);
 
-        //TODO: Animation of happy rotation
-        animator.SetTrigger("Upgrade");
+        if (index > currentModelIndex)
+        {
+            animator.SetTrigger("Upgrade");
+
+            Vector3 rot = model.transform.localRotation.eulerAngles;
+            rot.y += 360;
+            model.transform.DOLocalRotate(rot, 0.75f, RotateMode.FastBeyond360);
+
+        }
 
         currentModelIndex = index;
     }

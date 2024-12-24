@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21b735258bd6214286f3906f2d78945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addingMoney: 1
+  addingMoney: 2
 --- !u!135 &8482498596104642991
 SphereCollider:
   m_ObjectHideFlags: 0
