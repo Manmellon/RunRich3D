@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
     public float ForwardSpeed => forwardSpeed;
 
     private bool isPlaying;
+    public bool IsPlaying => isPlaying;
+
     private Core core;
 
     private void Awake()
@@ -163,5 +165,12 @@ public class Player : MonoBehaviour
     public void StepSound()
     {
         core.soundController.PlayStepSound(audioSource, currentModelIndex >= 2);
+    }
+
+    public void Win()
+    {
+        core.UIController.ShowWinScreen();
+        animator.SetTrigger("Win");
+        isPlaying = false;
     }
 }

@@ -19,6 +19,7 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
+        if (!player.IsPlaying) return;
         if (Input.touchCount == 0) return;
 
         Touch touch = Input.GetTouch(0);
